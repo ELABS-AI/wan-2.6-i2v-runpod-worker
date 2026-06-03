@@ -1,0 +1,31 @@
+# Wan 2.6 I2V RunPod Serverless — Python Requirements
+# Pinned for reproducibility.
+
+# Core deps (PyTorch included in base image)
+torch>=2.5.0
+torchvision>=0.20.0
+
+# Diffusers (Wan pipeline support)
+diffusers>=0.33.0
+transformers>=4.47.0
+accelerate>=1.2.0
+
+# Video encoding
+imageio>=2.36.0
+imageio-ffmpeg>=0.5.1
+av>=14.0.0
+
+# Image handling
+pillow>=11.0.0
+
+# RunPod serverless
+runpod>=1.7.5
+
+# HTTP client
+httpx>=0.28.0
+
+# Utilities
+huggingface_hub>=0.25.0
+safetensors>=0.4.5
+tqdm>=4.67.0
+numpy>=1.26.0
