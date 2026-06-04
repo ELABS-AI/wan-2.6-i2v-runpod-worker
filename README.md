@@ -14,7 +14,7 @@
 - 2-8 second output -- configurable duration
 - Natural motion -- smooth temporal consistency, no flickering
 - Motion strength control -- subtle to dramatic animation
-- Weights baked in -- fast cold start, no network volume
+|- Lazy model download from HuggingFace -- efficient image size (~4GB)
 
 ## Quick Start
 

@@ -1,5 +1,5 @@
 FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
-LABEL maintainer="E-Labs AI Studio" description="Wan 2.6 Image-to-Video — smooth video from a single image"
+LABEL maintainer="E-Labs AI Studio" description="Wan 2.6 Image-to-Video — flashboot-ready, model cached on first request"
 
 ENV DEBIAN_FRONTEND=noninteractive PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
 ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
@@ -18,13 +18,9 @@ WORKDIR /workspace
 COPY requirements-runpod.txt requirements-runpod.txt
 RUN pip install --no-cache-dir -r requirements-runpod.txt
 
-# Note: Model weights are downloaded on first request (lazy loading)
-# This keeps image size smaller while ensuring model is cached for subsequent requests
-# Model will be stored in HF_HOME cache (~15GB for WAN 2.2 I2V A14B)
-
 COPY handler.py /workspace/handler.py
 
-# Set HF cache dir for model persistence
+# Model cache directory for persistent storage across flashboot restarts
 ENV HF_HOME=/models/hf_cache
 
 CMD ["python", "-u", "handler.py"]

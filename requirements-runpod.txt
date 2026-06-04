@@ -1,9 +1,6 @@
 # Wan 2.6 I2V RunPod Serverless — Python Requirements
-# Pinned for reproducibility.
-
-# Core deps (PyTorch included in base image)
-torch>=2.5.0
-torchvision>=0.20.0
+# PyTorch is installed in a separate RUN command before this file.
+# Do NOT add torch/torchvision here - they must be pinned separately.
 
 # Diffusers (Wan pipeline support)
 diffusers>=0.33.0
