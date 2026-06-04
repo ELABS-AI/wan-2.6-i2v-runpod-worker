@@ -70,7 +70,9 @@ def load_pipeline():
     dtype = torch.bfloat16 if torch.cuda.is_available() else torch.float32
 
     print(f"  Device: {_device}, dtype: {dtype}", flush=True)
-    print(f"  VRAM: {torch.cuda.get_device_properties(0).total_mem / 1e9:.1f} GB", flush=True)
+    vram_gb = getattr(torch.cuda.get_device_properties(0), 'total_memory',
+                      getattr(torch.cuda.get_device_properties(0), 'total_mem', 0)) / 1e9
+    print(f"  VRAM: {vram_gb:.1f} GB", flush=True)
 
     # Import and load the Wan I2V pipeline from local model path
     from diffusers import WanImageToVideoPipeline
