@@ -48,8 +48,9 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 import torch
 
-# ── Model path (baked into image at BUILD TIME) ──────────────────────────────
-MODEL_ID = "/models/wan26-i2v"
+# Model ID: Official WAN 2.2 I2V A14B from HuggingFace
+# Will be downloaded on first request and cached in HF_HOME
+MODEL_ID = "Wan-AI/Wan2.2-I2V-A14B-Diffusers"
 
 # ── Global pipeline (loaded once, reused across jobs) ─────────────────────────
 _pipe = None

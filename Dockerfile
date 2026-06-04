@@ -18,6 +18,13 @@ WORKDIR /workspace
 COPY requirements-runpod.txt requirements-runpod.txt
 RUN pip install --no-cache-dir -r requirements-runpod.txt
 
+# Note: Model weights are downloaded on first request (lazy loading)
+# This keeps image size smaller while ensuring model is cached for subsequent requests
+# Model will be stored in HF_HOME cache (~15GB for WAN 2.2 I2V A14B)
+
 COPY handler.py /workspace/handler.py
+
+# Set HF cache dir for model persistence
+ENV HF_HOME=/models/hf_cache
 
 CMD ["python", "-u", "handler.py"]
